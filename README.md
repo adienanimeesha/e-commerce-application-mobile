@@ -109,5 +109,19 @@ Inisde the ItemCard, set color of the Material and Icon widget
 Run the project to see the changes created. 
 
 ### Display a Snackbar with Messages 
+Displaying messages with SnackBar is done under the InkWell widget (as shown below):
+```dart
+ child: InkWell(
+        // Action when the card is pressed.
+        onTap: () {
+          // Display the SnackBar message when the card is pressed.
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(content: Text("You have pressed the ${item.name} button!"))
+            );
+        },
+```
+ onTap is utilized in the ItemCard since it triggers the widget when users press or interact with the buttons. 
 
 
