@@ -1,4 +1,28 @@
-# Assignment 7 
+# Assignment 8
+
+##  What is the purpose of const in Flutter? Explain the advantages of using const in Flutter code. When should we use const, and when should it not be used?
+The use of const in flutter is to ensure certain fields cannot be changed. 
+Const is used when dealing with pre-defined values, immutable data objects, and optimizing widget trees. However, const should not be used when dealing with dynamic data
+
+## Explain and compare the usage of Column and Row in Flutter. Provide example implementations of each layout widget!
+The usage of Column widget align child widgets in a vertical direction. Whereas the Row Widget allign the child widget along the vertical direction
+
+## List the input elements you used on the form page in this assignment. Are there other Flutter input elements you didn’t use in this assignment? Explain!
+
+
+## How do you set the theme within a Flutter application to ensure consistency? Did you implement a theme in your application?
+
+
+## How do you manage navigation in a multi-page Flutter application?
+
+
+
+
+
+
+-------------------------------------------------------------------------
+<details>
+<summary>Assignment 7</summary>
 
 ## Explain what are stateless widgets and stateful widgets, and explain the difference between them.
 A stateless widget is something that never changes and cannot be altered once they are built. For example, Text, Icon, and IconButton. A stateful widget is the opposite, as it can be changed and altered multiple times during their lifetime. It has the ability to change its appearance based on the response to events that is triggered by user interactions. Some examples are: TextField, Checkbox, and Form. The difference is the type of widgets, stateless is static and stateful is dynamic. Stateless widgets are only rendered once and is only updated if there are changes made in the external data. Whereas stateful widgets can be re-rendred if th input data changes. 
@@ -124,4 +148,4 @@ Displaying messages with SnackBar is done under the InkWell widget (as shown bel
 ```
  onTap is utilized in the ItemCard since it triggers the widget when users press or interact with the buttons. 
 
-
+</details>
