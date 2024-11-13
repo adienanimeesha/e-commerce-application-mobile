@@ -1,5 +1,5 @@
 <details>
-<sumarry>Assignment 8</summary>
+<sumary>Assignment 8</summary>
 
 ##  What is the purpose of const in Flutter? Explain the advantages of using const in Flutter code. When should we use const, and when should it not be used?
 The use of const in flutter is to ensure certain fields cannot be changed. 
