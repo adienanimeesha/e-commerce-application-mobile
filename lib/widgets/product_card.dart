@@ -45,6 +45,14 @@ class ItemCard extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(color: Colors.white),
                 ),
+                if (item.price != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: Text(
+                      '\$${item.price!.toStringAsFixed(2)}', // format price to 2 decimal places
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
               ],
             ),
           ),
@@ -59,6 +67,7 @@ class ItemHomepage {
      final String name;
      final IconData icon;
      final Color color;
+     final double? price;
 
-     ItemHomepage(this.name, this.icon, this.color);
+     ItemHomepage(this.name, this.icon, this.color, [this.price]);
  }

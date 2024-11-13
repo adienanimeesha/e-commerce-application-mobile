@@ -13,6 +13,7 @@ class _ProductEntryFormPageState extends State<ProductEntryFormPage> {
   String _productName = "";
   String _description = "";
   int _amount = 0;
+  double _price = 0.0; 
 
   @override
   Widget build(BuildContext context) {
@@ -112,8 +113,39 @@ class _ProductEntryFormPageState extends State<ProductEntryFormPage> {
                     if (intValue <= 0) {
                       return "Amount must be a positive number!";
                     }
-                    if (intValue > 10000) {
-                      return "Amount cannot exceed 10,000!";
+                    if (intValue > 1000) {
+                      return "Amount cannot exceed 1000!";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(
+                    hintText: "Price",
+                    labelText: "Price",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      _price = double.tryParse(value!) ?? 0.0;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Price cannot be empty!";
+                    }
+                    final doubleValue = double.tryParse(value);
+                    if (doubleValue == null) {
+                      return "Price must be a valid number!";
+                    }
+                    if (doubleValue < 0) {
+                      return "Price must be a positive number!";
                     }
                     return null;
                   },
