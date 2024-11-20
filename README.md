@@ -1,3 +1,60 @@
+# Assignments 7-9 README
+
+-------------------------------------------------------------------------
+<details>
+<summary>Assignment 9</summary>
+
+## Explain why we need to create a model to retrieve or send JSON data. Will an error occur if we don't create a model first?
+A model is needed to retrieve or send JSON data since in this assignment, we are storing and retrieving data (username, password, user's product entries, etc). Because of this, models are needed to represent the data in the database. An error will occur if models aren't created first. If a data needs to be saved, an error may arise since there is no existing model to store the data in. 
+
+## Explain the function of the http library that you implemented for this task.
+The http library is used to send and receive http requests between the web server and the Flutter application. Http functon is needed so that the Flutter app can fetch and send data from the Django database using the Django application. Without http library, the data won't be able to be displayed.
+
+## Explain the function of CookieRequest and why it's necessary to share the CookieRequest instance with all components in the Flutter app.
+CookieRequest is used for user session and authentication. It's necessary to share the CookieRequest since it enables consistency accross the Flutter application. This is because the same cookies are used in the http requests and this allows the session data to be stored. 
+
+## Explain the mechanism of data transmission, from input to display in Flutter.
+It starts by the user inputting the fields present in the "Add product" widget of the Flutter app and pressing "submit" to save the data. The saved data is then formatted  to JSON and then sent to the Django app via http POST request. Once the data reached the server, the data is validated (ensuring the user's input matches the fields), stored to the database, and sending a "sucess" or "error" response to the flutter app. The data is then displayed using a GET request made by the flutter app. The GET request is sent to the Django app so that data will be retrieved and updates the user's interface via widgets to display the data. 
+
+## Explain the authentication mechanism from login, register, to logout. Start from inputting account data in Flutter to Django's completion of the authentication process and display of the menu in Flutter.
+This starts by users inputting a username and password in the registration form, ensuring the user's entries matches the field integrated in flutter. Then the data is sent from Flutter to Django, where the data is further validated and saving it in the database. After registering, the user will input their credentials into the login form in the Flutter UI and the Django app will authenticate users, checking the inputted data matches with the datas in the database. If the data is valid, then Django will send a response with a cookie session (start of session). When the user logout, they will click the logout button in the Flutter app. This triggers an http request and the Django app will end the session. 
+
+## Explain how you implement the checklist above step by step! (not just following the tutorial).
+### Implement the registration feature in the Flutter project.
+This is done by creating a new app called "authentication" in the Django project. This is to help handle login, registration, and logout properly and so the user can interact with the database securely. In the views.py of the authentication module, add the function for register. The function decodes the raw JSON and stores it in a python dictonary. The username, password1, and password2 is then obtained from the data dictionary. This is where the password is also checked, to see if they match with the database. Then add the url path in urls.py of authentication, to ensure it can be accessed through the application. In the Flutter app, create a file called "register.dart" and add the code, implementing the application url to check the credentials. 
+
+###  Create a login page in the Flutter project.
+Similar to creating the register feature, add a function called "login" (which takes the parameter request) in views.py of the authentication app. If login is successful,
+
+### Integrate the Django authentication system with the Flutter project.
+
+
+### Create a custom model according to your Django application project.
+
+
+### Create a page containing a list of all items available at the JSON endpoint in Django that you have deployed.
+#### Display the name, price, and description of each item on this page.
+
+
+#### Create a detail page for each item listed on the Product list page.
+
+
+#### This page can be accessed by tapping on any item on the Product list page.
+
+
+#### Display all attributes of your item model on this page.
+ 
+ 
+#### Add a button to return to the item list page.
+
+
+### Filter the item list page to display only items associated with the currently logged-in user.
+
+
+</details>
+
+-------------------------------------------------------------------------
+
 <details>
 <summary>Assignment 8</summary>
 

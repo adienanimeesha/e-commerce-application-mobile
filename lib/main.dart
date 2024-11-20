@@ -1,5 +1,7 @@
+import 'package:e_commerce_application/screens/login.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_application/screens/menu.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,18 +12,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-       colorScheme: ColorScheme.fromSwatch(
-       primarySwatch: Colors.grey,
- ).copyWith
-       (secondary: Color.fromARGB(255, 218, 216, 216),
-       ),
-        useMaterial3: true,
+    return Provider(
+      create: (_) {
+        CookieRequest request = CookieRequest();
+        return request;
+      },
+      child: MaterialApp(
+        title: 'Mental Health Tracker',
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.grey,
+          ).copyWith(secondary:  Color.fromARGB(255, 218, 216, 216),),
+        ),
+        home: LoginPage(),
       ),
-      home: MyHomePage(),
-);
+    );
   }
 }
   
