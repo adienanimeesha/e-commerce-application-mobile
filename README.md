@@ -24,31 +24,45 @@ This starts by users inputting a username and password in the registration form,
 This is done by creating a new app called "authentication" in the Django project. This is to help handle login, registration, and logout properly and so the user can interact with the database securely. In the views.py of the authentication module, add the function for register. The function decodes the raw JSON and stores it in a python dictonary. The username, password1, and password2 is then obtained from the data dictionary. This is where the password is also checked, to see if they match with the database. Then add the url path in urls.py of authentication, to ensure it can be accessed through the application. In the Flutter app, create a file called "register.dart" and add the code, implementing the application url to check the credentials. 
 
 ###  Create a login page in the Flutter project.
-Similar to creating the register feature, add a function called "login" (which takes the parameter request) in views.py of the authentication app. If login is successful,
+Similar to creating the register feature, add a function called "login" (which takes the parameter request) in views.py of the authentication app. If login is successful, a JSON response containting the username and a success message will be returned. If not, it will return an error JSON response. Routing is then performed in urls.py so that the login function can be accessed throughout the authentication application. In the flutter app, create a folder called "screens" and inside this folder create a file called "login.dart". Add the code for login, which consists of a textfield to ensure user fill in the correct field and to check the user's credentials. In the MaterialApp(...) widget of the main.dart file, change home: MyHomePage() to home: LoginPage() so that the login page is displayed, and ensuring user authentication before entering the app.  
 
 ### Integrate the Django authentication system with the Flutter project.
-
+This is done by creating a new app in the Django project called "authentication". Then run pip install django-cors-headers to download the required library. corsheaders is used since it allows a frontend application (in this case Flutter) to run on a different domain with a Django server. Then add corsheader into the INSTALLED_APPS and add  corsheaders.middleware.CorsMiddleware to MIDDLEWARE. 
 
 ### Create a custom model according to your Django application project.
-
+To create a custom model based on the Django application project. This is done by running the Django app and creating a new product entry. Then add "JSON" in the local host so that the JSON data can be retrieved. Copy the data and access the website "Quicktype". In the website, change the setup name to ProductEntry, source type to JSON, and the language to dart, and paste the JSON data from before. In the Flutter app, create a folder called "models" and a file called "product_entry.dart" and paste the code. A custom model is used to maintain consistency of the models between front-end and back-end and so that it will be compatible. 
 
 ### Create a page containing a list of all items available at the JSON endpoint in Django that you have deployed.
-#### Display the name, price, and description of each item on this page.
+This is done by creating a new page called "list_productentry.dart" then importing product entry and the left drawer at the very top so that it can be accessed. Add the code to the "list_productentry.dart" file and this code is able to fetch and display the list of product entries from the Django JSON API. This code also handles data asynchronously. Inside the left drawer file, add the following code:
+```dart
+ListTile(
+    leading: const Icon(Icons.add_reaction_rounded),
+    title: const Text('Product List'),
+    onTap: () {
+        // Route to the product page
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProductEntryPage()),
+        );
+    },
+),
+``` 
+so that the page is visible in the left drawer and users can easily access it through there. Then the function "view mood" is changed in the main page so that users will be redirected to the ProductPage. 
 
+#### Display the name, price, and description of each item on this page.
+This is done by using fetchProduct() to fetch all the name, price, and description of each item. Then add navigation to the left drawer file so the list of names, price, and description can be displayed. 
 
 #### Create a detail page for each item listed on the Product list page.
+##### This page can be accessed by tapping on any item on the Product list page.
+This is done by creating a new file called "product_detail.dart" inside the "screens" folder. Then add the codes so that it can be accessed by tapping on any item if the product list page, ensuring to import the product list page and creating a new class for product list and using a stateless widget.
 
+##### Display all attributes of your item model on this page.
 
-#### This page can be accessed by tapping on any item on the Product list page.
-
-
-#### Display all attributes of your item model on this page.
  
- 
-#### Add a button to return to the item list page.
+##### Add a button to return to the item list page.
+This is done by updating the product_detail.dart file, adding a code for the button.The Navigator.pop() is used to pop the current page of the navigation stack and to return it to the Product List Page. The ElevatedButton will trigger the Navigator.pop() when pressed.
 
-
-### Filter the item list page to display only items associated with the currently logged-in user.
+##### Filter the item list page to display only items associated with the currently logged-in user.
 
 
 </details>
